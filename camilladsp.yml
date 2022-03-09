@@ -1,11 +1,9 @@
 devices:
   adjust_period: 10
   capture:
-    avoid_blocking_read: false
     channels: 2
     device: hw:CARD=Loopback,DEV=1
     format: S24LE
-    retry_on_error: false
     type: Alsa
   capture_samplerate: 0
   chunksize: 4096
@@ -75,10 +73,12 @@ pipeline:
 - name: to4chan
   type: Mixer
 - channel: 0
-  names: []
+  names:
+  - highpass2k
   type: Filter
 - channel: 1
-  names: []
+  names:
+  - highpass2k
   type: Filter
 - channel: 2
   names:
