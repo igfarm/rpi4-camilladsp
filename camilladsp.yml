@@ -1,9 +1,11 @@
 devices:
   adjust_period: 10
   capture:
+    avoid_blocking_read: false
     channels: 2
     device: hw:CARD=Loopback,DEV=1
     format: S24LE
+    retry_on_error: false
     type: Alsa
   capture_samplerate: 0
   chunksize: 4096
@@ -59,14 +61,14 @@ mixers:
       mute: false
       sources:
       - channel: 0
-        gain: -10
+        gain: 0
         inverted: false
         mute: false
     - dest: 3
       mute: false
       sources:
       - channel: 1
-        gain: -10
+        gain: 0
         inverted: false
         mute: false
 pipeline:
