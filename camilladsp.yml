@@ -35,6 +35,12 @@ filters:
       order: 4
       type: LinkwitzRileyLowpass
     type: BiquadCombo
+  mains-delay:
+    parameters:
+      delay: 10
+      subsample: false
+      unit: ms
+    type: Delay
 mixers:
   to4chan:
     channels:
@@ -45,28 +51,28 @@ mixers:
       mute: false
       sources:
       - channel: 0
-        gain: 0
+        gain: -3
         inverted: false
         mute: false
     - dest: 1
       mute: false
       sources:
       - channel: 1
-        gain: 0
+        gain: -3
         inverted: false
         mute: false
     - dest: 2
       mute: false
       sources:
       - channel: 0
-        gain: 0
+        gain: -3
         inverted: false
         mute: false
     - dest: 3
       mute: false
       sources:
       - channel: 1
-        gain: 0
+        gain: -3
         inverted: false
         mute: false
 pipeline:
@@ -75,10 +81,12 @@ pipeline:
 - channel: 0
   names:
   - highpass2k
+  - mains-delay
   type: Filter
 - channel: 1
   names:
   - highpass2k
+  - mains-delay
   type: Filter
 - channel: 2
   names:
